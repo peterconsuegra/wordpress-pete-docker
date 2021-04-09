@@ -37,18 +37,6 @@ services:
             - ./data:/var/lib/mysql
             - ./init.sql:/data/application/init.sql
     container_name: mysql
-  dns:
-    restart: always
-    image: strm/dnsmasq
-    volumes:
-      - ./dnsmasq.conf:/etc/dnsmasq.conf
-    ports:
-      - "53:53/udp"
-    cap_add:
-      - NET_ADMIN
-    networks:
-      - backend
-    container_name: dnsmasq
 networks:
   backend:
 volumes:

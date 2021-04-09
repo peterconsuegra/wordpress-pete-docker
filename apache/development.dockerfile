@@ -110,12 +110,14 @@ RUN rm -f /var/www/html/index.html && \
     tar cf /var/www/html/.config/etc-php.tar     etc/php && \
     dpkg -l > /var/www/html/.config/dpkg-l.txt
 	
+RUN mkdir -p /var/www/html/wwwlog
 RUN chown -R www-data:www-data /var/www
 RUN chown -R www-data:www-data /etc/apache2/mods-enabled
+
 
 EXPOSE 80
 USER www-data
 
 COPY development_pete_install.sh /usr/local/bin/development_pete_install.sh
-ENTRYPOINT ["/usr/local/bin/development_pete_install.sh"]
+ENTRYPOINT ["sh","/usr/local/bin/development_pete_install.sh"]
 
