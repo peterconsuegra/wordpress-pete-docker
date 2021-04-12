@@ -1,12 +1,4 @@
-#!/bin/bash
-
-while getopts e: option 
-do 
-case "${option}" 
-	in 
-	e) environment=${OPTARG};;
-esac 
-done 
+#!/bin/bash 
 
 FILE=/var/www/html/.installed
 if [ ! -f "$FILE" ]; then
@@ -72,6 +64,7 @@ mkdir -p $pete_route/storage/logs
 touch $pete_route/storage/logs/laravel.log
 
 mkdir -p /var/www/html/wwwlog/Pete4
+mkdir -p /var/www/html/wwwlog/example1
 composer dump-autoload
 
 echo "done" > /var/www/html/.installed
@@ -79,8 +72,10 @@ echo "done" > /var/www/html/.installed
 
 fi
 
-sleep 30
-cd /var/www/html/Pete4
-php artisan addoption --option_name=domain_template --option_value=none
-
+echo "Launching apache..."
+sleep 15
+if test "$ENVIRONMENTENV" = 'development'; then
+cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=petelocal.net
+fi
 apachectl -DFOREGROUND
+echo "Loading apache..."

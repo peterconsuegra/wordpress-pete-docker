@@ -1,7 +1,7 @@
 #Docker recipes
 
-docker-compose -f development.yml up --build
-docker-compose -f production.yml up --build
+docker-compose -f windows.yml up --build 
+docker-compose -f unix.yml up --build
 
 docker-compose up --build 
 
@@ -16,6 +16,9 @@ docker-compose up
 
 Stop docker:
 docker-compose -f development.yml down
+
+docker-compose down
+
 
 ###Error container activo
 
@@ -116,3 +119,6 @@ docker compose run --rm composer create-project laravel/laravel /var/www/html/la
       - laravel
 
 git clone git@bitbucket.org:ozone777/wordpress-pete-docker.git
+
+WINDOWS 
+:\Windows\System32\drivers\etc\hosts

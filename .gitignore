@@ -1,8 +1,4 @@
 data/*
 public_html/*
 conf/*
-!public_html/example1
-!public_html/passionate.tar.gz
-!conf/example1.conf
 !conf/pete.conf
-

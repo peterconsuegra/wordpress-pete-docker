@@ -3,10 +3,10 @@ services:
   apache:
     build:
       context: './apache/'
-      dockerfile: development.dockerfile
       args:
        APACHE_VERSION: ${APACHE_VERSION}
        PHP_VERSION: ${PHP_VERSION}
+       ENVIRONMENT: ${ENVIRONMENT}
     depends_on:
       - mysql
     environment:
@@ -22,7 +22,6 @@ services:
   mysql:
     build:
       context: './mysql'
-    command: --init-file /data/application/init.sql
     restart: always
     ports:
       - "3306:3306"
@@ -36,20 +35,9 @@ services:
       MYSQL_VERSION: "${MYSQL_VERSION}"
     volumes:
             - ./data:/var/lib/mysql
-            - ./init.sql:/data/application/init.sql
+            - ./mysql/init.sql:/data/application/init.sql
+            - ./mysql/my.cnf:/etc/my.cnf
     container_name: mysql
-  dns:
-    restart: always
-    image: strm/dnsmasq
-    volumes:
-      - ./dnsmasq.conf:/etc/dnsmasq.conf
-    ports:
-      - "53:53/udp"
-    cap_add:
-      - NET_ADMIN
-    networks:
-      - backend
-    container_name: dnsmasq
 networks:
   backend:
 volumes:
