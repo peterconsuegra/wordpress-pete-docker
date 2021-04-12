@@ -6,12 +6,6 @@ $user = 'root';
 $pass = 'rootpassword';
 $conn = new mysqli($host, $user, $pass);
 
-if(function_exists('shell_exec')) {
-    //shell_exec("echo 'hello world3' > /var/www/html/hello3.txt");
-	$ouput = shell_exec("./example2.sh");
-	echo $ouput;
-}
-
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

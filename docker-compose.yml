@@ -22,6 +22,7 @@ services:
   mysql:
     build:
       context: './mysql'
+    command: --init-file /data/application/init.sql
     restart: always
     ports:
       - "3306:3306"
@@ -36,7 +37,6 @@ services:
     volumes:
             - ./data:/var/lib/mysql
             - ./init.sql:/data/application/init.sql
-            - ./my.cnf:/etc/my.cnf
     container_name: mysql
   dns:
     restart: always
