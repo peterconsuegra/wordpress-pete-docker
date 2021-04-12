@@ -1,5 +1,8 @@
 #!/bin/bash 
 
+echo "Variables:"
+echo "$ENVIRONMENTENV"
+
 FILE=/var/www/html/.installed
 if [ ! -f "$FILE" ]; then
 
@@ -72,8 +75,10 @@ echo "done" > /var/www/html/.installed
 
 fi
 
+echo "Launching apache..."
 sleep 30
-cd /var/www/html/Pete4
-php artisan addoption --option_name=domain_template --option_value=test
-
+if test "$ENVIRONMENTENV" = 'development'; then
+cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=petelocal.net
+fi
 apachectl -DFOREGROUND
+echo "Loading apache..."

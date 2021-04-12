@@ -118,6 +118,9 @@ RUN chown -R www-data:www-data /etc/apache2/mods-enabled
 EXPOSE 80
 USER www-data
 
+ARG ENVIRONMENT
+ENV ENVIRONMENTENV=$ENVIRONMENT
+
 COPY development_pete_install.sh /usr/local/bin/development_pete_install.sh
 ENTRYPOINT ["sh","/usr/local/bin/development_pete_install.sh"]
 
