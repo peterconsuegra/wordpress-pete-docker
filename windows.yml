@@ -34,7 +34,7 @@ services:
       MYSQL_PASSWORD: "${DB_PASSWORD}"
       MYSQL_VERSION: "${MYSQL_VERSION}"
     volumes:
-            - ./data:/var/lib/mysql
+            - ./mysql/data:/var/lib/mysql
             - ./mysql/init.sql:/data/application/init.sql
             - ./mysql/my.cnf:/etc/my.cnf
     container_name: mysql

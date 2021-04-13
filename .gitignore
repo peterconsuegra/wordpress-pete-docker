@@ -1,4 +1,5 @@
 data/*
 public_html/*
 conf/*
+mysql/data/*
 !conf/pete.conf
