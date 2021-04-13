@@ -3,10 +3,10 @@ services:
   apache:
     build:
       context: './apache/'
-      dockerfile: production.dockerfile
       args:
        APACHE_VERSION: ${APACHE_VERSION}
        PHP_VERSION: ${PHP_VERSION}
+       ENVIRONMENT: ${ENVIRONMENT}
     depends_on:
       - mysql
     environment:
