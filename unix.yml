@@ -36,7 +36,22 @@ services:
     volumes:
             - ./mysql/data:/var/lib/mysql
             - ./mysql/init.sql:/data/application/init.sql
+            - ./mysql/unix_my.cnf:/etc/my.cnf
     container_name: mysql
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    links:
+      - "mysql"
+    environment:
+      PMA_HOST: "mysql"
+      PMA_PORT: "3306"
+      UPLOAD_LIMIT: "256M"
+      container_name: phpmyadmin
 networks:
   backend:
 volumes:

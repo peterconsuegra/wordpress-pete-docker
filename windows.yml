@@ -36,7 +36,7 @@ services:
     volumes:
             - ./mysql/data:/var/lib/mysql
             - ./mysql/init.sql:/data/application/init.sql
-            - ./mysql/my.cnf:/etc/my.cnf
+            - ./mysql/windows_my.cnf:/etc/my.cnf
     container_name: mysql
 networks:
   backend:

@@ -60,7 +60,7 @@ docker-compose exec php /bin/sh
 
 ###Navegar en el container mysql
 
-docker-compose exec mysql /bin/sh 
+docker-compose -f unix.yml exec mysql /bin/sh 
 php artisan create_database --host=mysql --db_user=root --db_user_pass=rootpassword --db_name=petedb
 
 docker exec -it mysql mysql -uroot -prootpassword
