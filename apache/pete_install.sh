@@ -31,7 +31,7 @@ PETE_ROOT_PASS=rootpassword
 PETE_DASHBOARD_URL=https://dashboard.wordpresspete.com
 PETE_DEMO=inactive
 PETE_ENVIRONMENT=production
-PETE_DEBUG=active
+PETE_DEBUG=inactive
 " >> $pete_route/.env
 
 composer install
@@ -76,6 +76,8 @@ echo "Launching apache..."
 sleep 15
 if test "$ENVIRONMENTENV" = 'development'; then
 cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=petelocal.net
+else
+cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=none
 fi
 apachectl -DFOREGROUND
 echo "Loading apache..."
