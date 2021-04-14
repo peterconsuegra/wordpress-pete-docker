@@ -1,3 +1,9 @@
+#WordPres Pete
+
+[logo]: https://github.com/peterconsuegra/wordpress-pete-docker/raw/master/apache/common/images/petelogo.png "WordPress Pete"
+
+https://wordpresspete.com
+
 # Install instructions
 
 ## Mac & Linux
@@ -42,13 +48,21 @@ docker-compose -f windows.yml down
 You can change the docker settings from .env file:
 
 PHP_VERSION=7.4
+
 MYSQL_VERSION=5.7
+
 APACHE_VERSION=2.4.32
+
 ENVIRONMENT=development
 
 DB_ROOT_PASSWORD=rootpassword
+
 DB_NAME=pete_db
+
 DB_USERNAME=otherUser
+
 DB_PASSWORD=password
+
+
 
 
