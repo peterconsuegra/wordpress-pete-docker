@@ -1,6 +1,5 @@
 #WordPres Pete
 
-Inline-style: 
 ![alt text](https://raw.githubusercontent.com/peterconsuegra/wordpress-pete-docker/master/apache/petelogo.png "WordPress Pete Logo")
 
 https://wordpresspete.com
