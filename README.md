@@ -122,3 +122,6 @@ git clone git@bitbucket.org:ozone777/wordpress-pete-docker.git
 
 WINDOWS 
 :\Windows\System32\drivers\etc\hosts
+
+Para testear
+utilizar archivo pete

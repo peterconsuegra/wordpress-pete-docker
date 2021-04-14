@@ -2,5 +2,4 @@ data/*
 public_html/*
 conf/*
 mysql/data/*
-/mysql/data
 !conf/pete.conf
