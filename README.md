@@ -1,6 +1,6 @@
-#Install instructions
+# Install instructions
 
-##Mac
+## Mac
 
 Install Docker
 
@@ -20,7 +20,7 @@ Stop docker
 docker-compose -f unix.yml down
 
 
-##Windows
+## Windows
 
 git clone -b 1.1 https://github.com/peterconsuegra/wordpress-pete-docker.git
 cd wordpress-pete-docker
@@ -35,7 +35,7 @@ docker-compose -f windows.yml exec mysql /bin/sh
 Stop docker
 docker-compose -f windows.yml down
 
-##Docker settings
+## Docker settings
 
 You can change the docker settings from .env file:
 
