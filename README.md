@@ -1,8 +1,8 @@
-#WordPres Pete
+# WordPres Pete
+
+WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone WordPress sites in minutes.
 
 ![alt text](https://raw.githubusercontent.com/peterconsuegra/wordpress-pete-docker/master/apache/petelogo.png "WordPress Pete Logo")
-
-https://wordpresspete.com
 
 # Install instructions
 
@@ -65,6 +65,10 @@ DB_NAME=pete_db
 DB_USERNAME=otherUser
 
 DB_PASSWORD=password
+
+## More
+
+See more at: https://wordpresspete.com
 
 
 
