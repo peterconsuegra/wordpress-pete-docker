@@ -26,12 +26,15 @@ docker-compose -f unix.yml down
 3. docker-compose -f windows.yml up --build
 
 __Access to apache container console:__
+
 docker-compose -f windows.yml exec apache /bin/sh 
 
 __Access to mysql container console:__
+
 docker-compose -f windows.yml exec mysql /bin/sh 
 
 __Stop docker:__
+
 docker-compose -f windows.yml down
 
 ## Docker settings
