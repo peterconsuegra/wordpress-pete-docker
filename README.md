@@ -54,9 +54,14 @@ Configuracion de nginx por default:
 
 docker-compose exec apache /bin/sh 
 
+docker-compose -f unix.yml exec apache /bin/sh 
+
 ###Navegar en el container apache
 
 docker-compose exec php /bin/sh 
+
+docker-compose exec php /bin/sh 
+
 
 ###Navegar en el container mysql
 
