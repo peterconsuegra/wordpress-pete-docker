@@ -1,6 +1,6 @@
 #WordPres Pete
 
-[logo]: https://github.com/peterconsuegra/wordpress-pete-docker/raw/master/apache/common/images/petelogo.png "WordPress Pete"
+[logo]: https://raw.githubusercontent.com/peterconsuegra/wordpress-pete-docker/master/apache/petelogo.png "WordPress Pete"
 
 https://wordpresspete.com
 
@@ -16,12 +16,15 @@ sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 4. docker-compose -f unix.yml up --build
 
 __Access to apache container console:__
+
 docker-compose -f unix.yml exec apache /bin/sh 
 
 __Access to mysql container console:__
+
 docker-compose -f unix.yml exec mysql /bin/sh 
 
 __Stop docker:__
+
 docker-compose -f unix.yml down
 
 
