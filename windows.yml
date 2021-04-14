@@ -16,7 +16,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ${PROJECT_ROOT}:/var/www/html
+      - ./public_html:/var/www/html
       - ./conf:/etc/apache2/pete-sites
     container_name: apache
   mysql:
