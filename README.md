@@ -21,6 +21,8 @@ WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone W
 6. Wait until wordPress Pete migrations finish
 7. open: http://pete.petelocal.net/
 
+Check the installation video for macOS:
+
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=_DWmv0Mqrhk
 " target="_blank"><img src="http://img.youtube.com/vi/_DWmv0Mqrhk/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
