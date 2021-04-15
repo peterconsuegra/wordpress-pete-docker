@@ -8,6 +8,8 @@ RUN echo COMPOSE_FILE
 # Install apache and php7
 RUN apt-get update && \
     apt-get -y install \
+	    nodejs \
+		npm \
 		curl \
         apache2 \
 		git \

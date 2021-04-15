@@ -38,7 +38,8 @@ docker-compose -f unix.yml down
 2. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
 3. cd wordpress-pete-docker
 4. Activate container Hyper-V docker
-5. docker-compose -f windows.yml up --build
+5. git config --global core.autocrlf true (For compatibility, line endings are converted to Unix style when you commit files)
+6. docker-compose -f windows.yml up --build
 
 __Access to apache container console:__
 
