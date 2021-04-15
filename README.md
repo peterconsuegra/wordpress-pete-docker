@@ -13,9 +13,9 @@ WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone W
 3. cd wordpress-pete-docker
 4. Stop default apache server in macOs:
 
-⋅⋅⋅sudo -S apachectl stop
+⋅⋅⋅ sudo -S apachectl stop
 
-⋅⋅⋅sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
+⋅⋅⋅ sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
 
 5. docker-compose -f unix.yml up --build
 
