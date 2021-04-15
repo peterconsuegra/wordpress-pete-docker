@@ -4,7 +4,7 @@ FILE=/var/www/html/.installed
 if [ ! -f "$FILE" ]; then
 
 rm -rf /var/www/html/Pete4	
-git clone -b v4 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete4 && echo "cloned"
+git clone -b v4.1 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete4 && echo "cloned"
 
 #Hack wait 300 seconds to mysql be alive
 #sleep 300
@@ -40,7 +40,7 @@ php artisan migrate
 
 #general options
 php artisan addoption --option_name=os --option_value=docker
-php artisan addoption --option_name=version --option_value=4.0
+php artisan addoption --option_name=version --option_value=4.1
 php artisan addoption --option_name=app_root --option_value=/var/www/html
 php artisan addoption --option_name=server_conf --option_value=$conf_route
 php artisan addoption --option_name=server --option_value=apache
