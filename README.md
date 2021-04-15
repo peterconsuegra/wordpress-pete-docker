@@ -73,6 +73,8 @@ DB_USERNAME=otherUser
 
 DB_PASSWORD=password
 
+Note: When you change the values of the DB_ROOT_PASSWORD in the .env file you must also do it in the /public_html/Pete4/.env file
+
 ## More
 
 See more at: https://wordpresspete.com
