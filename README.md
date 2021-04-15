@@ -18,6 +18,8 @@ WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone W
 3. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
 4. cd wordpress-pete-docker
 5. docker-compose -f unix.yml up --build
+6. Wait until wordPress Pete migrations finish
+7. open: http://pete.petelocal.net/
 
 __Access to apache container console:__
 
@@ -40,6 +42,8 @@ docker-compose -f unix.yml down
 4. Activate container Hyper-V in docker
 5. git config --global core.autocrlf true (For compatibility, line endings are converted to Unix style when you commit files)
 6. docker-compose -f windows.yml up --build
+7. Wait until wordPress Pete migrations finish
+8. open: http://pete.petelocal.net/
 
 __Access to apache container console:__
 
