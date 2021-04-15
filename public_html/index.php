@@ -5,8 +5,8 @@
 </head>
 <body>
 
-<h1>Redirecting..</h1>
-sss
+<h1>Redirecting to WordPress Pete..</h1>
+
 <script>
 	window.location.replace("http://pete.petelocal.net");
 </script>
