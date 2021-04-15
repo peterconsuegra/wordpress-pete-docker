@@ -8,15 +8,15 @@ WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone W
 
 ## MacOS & Linux
 
-1. Open terminal
-2. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
-3. cd wordpress-pete-docker
-4. Stop default apache server in macOs:
+1. Stop default apache server in macOs:
 
 ⋅⋅⋅ sudo -S apachectl stop
 
 ⋅⋅⋅ sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
 
+2. Open terminal
+3. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
+4. cd wordpress-pete-docker
 5. docker-compose -f unix.yml up --build
 
 __Access to apache container console:__
@@ -77,7 +77,9 @@ Note: When you change the values of the DB_ROOT_PASSWORD in the .env file you mu
 
 ## More
 
-See more at: https://wordpresspete.com
+1. https://wordpresspete.com
+2. https://wordpresspete.com/tutorials
+
 
 
 
