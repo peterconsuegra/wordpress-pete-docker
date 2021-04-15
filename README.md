@@ -8,15 +8,16 @@ WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone W
 
 ## MacOS & Linux
 
-1. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
-2. cd wordpress-pete-docker
-3. Stop default apache server in macOs:
+1. Open terminal
+2. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
+3. cd wordpress-pete-docker
+4. Stop default apache server in macOs:
 
-sudo -S apachectl stop
+⋅⋅⋅sudo -S apachectl stop
 
-sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
+⋅⋅⋅sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
 
-4. docker-compose -f unix.yml up --build
+5. docker-compose -f unix.yml up --build
 
 __Access to apache container console:__
 
@@ -33,9 +34,11 @@ docker-compose -f unix.yml down
 
 ## Windows
 
-1. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
-2. cd wordpress-pete-docker
-3. docker-compose -f windows.yml up --build
+1. Open terminal
+2. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
+3. cd wordpress-pete-docker
+4. Activate container Hyper-V docker
+5. docker-compose -f windows.yml up --build
 
 __Access to apache container console:__
 
