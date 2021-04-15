@@ -3,4 +3,5 @@ public_html/*
 conf/*
 mysql/data/*
 !conf/pete.conf
+!public_html/index.php
 .DS_Store
