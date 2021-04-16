@@ -8,18 +8,20 @@ WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone W
 
 ## MacOS & Linux
 
-1. Open terminal
-2. Stop default apache server in macOs:
+1. Install docker
+2. Install GIT
+3. Open terminal
+4. Stop default apache server in macOs:
 
 ⋅⋅⋅ sudo -S apachectl stop
 
 ⋅⋅⋅ sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
 
-3. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
-4. cd wordpress-pete-docker
-5. docker-compose -f unix.yml up --build
-6. Wait until wordPress Pete migrations finish
-7. open: http://pete.petelocal.net/
+5. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
+6. cd wordpress-pete-docker
+7. docker-compose -f unix.yml up --build
+8. Wait until wordPress Pete migrations finish
+9. open: http://pete.petelocal.net/
 
 Check the installation video for macOS:
 
@@ -42,14 +44,23 @@ docker-compose -f unix.yml down
 
 ## Windows
 
-1. Open terminal
-2. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
-3. cd wordpress-pete-docker
-4. Activate container Hyper-V in docker
-5. git config --global core.autocrlf true (For compatibility, line endings are converted to Unix style when you commit files)
-6. docker-compose -f windows.yml up --build
-7. Wait until wordPress Pete migrations finish
-8. open: http://pete.petelocal.net/
+1. Install docker
+2. Activate container Hyper-V in docker
+3. Install GIT
+4. git config --global core.autocrlf true (For compatibility, line endings are converted to Unix style when you commit files)
+5. Open terminal
+6. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
+7. cd wordpress-pete-docker  
+8. docker-compose -f windows.yml up --build
+9. Wait until wordPress Pete migrations finish
+10. open: http://pete.petelocal.net/
+
+Check the installation video for Windows:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=ML8NNVGfq8I
+" target="_blank"><img src="http://img.youtube.com/vi/ML8NNVGfq8I/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 
 __Access to apache container console:__
 
