@@ -67,11 +67,13 @@ docker-compose -f windows.yml down
 
 You can change the docker settings from .env file:
 
+Supported php versions: 7.2, 7.3, 7.4
+
+Change the environment to production to allow domains other than * .petelocal.net
+
+MYSQL Note: When you change the values of the DB_ROOT_PASSWORD in the .env file you must also do it in the /public_html/Pete4/.env file and in every WordPress or Laraval config file you’ve created.
+
 PHP_VERSION=7.4
-
-MYSQL_VERSION=5.7
-
-APACHE_VERSION=2.4.32
 
 ENVIRONMENT=development
 
@@ -82,8 +84,6 @@ DB_NAME=pete_db
 DB_USERNAME=otherUser
 
 DB_PASSWORD=password
-
-Note: When you change the values of the DB_ROOT_PASSWORD in the .env file you must also do it in the /public_html/Pete4/.env file
 
 ## More
 
