@@ -37,6 +37,8 @@ __Access to mysql container console:__
 
 docker-compose -f unix.yml exec mysql /bin/sh 
 
+docker exec -it mysql mysql -uroot -prootpassword
+
 __Stop docker:__
 
 docker-compose -f unix.yml down

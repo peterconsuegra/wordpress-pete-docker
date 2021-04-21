@@ -52,6 +52,8 @@ services:
       PMA_PORT: "3306"
       UPLOAD_LIMIT: "256M"
       container_name: phpmyadmin
+    networks:
+      - backend
 networks:
   backend:
 volumes:
