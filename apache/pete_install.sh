@@ -57,7 +57,7 @@ php artisan addoption --option_name=logs_route --option_value=/var/www/html/wwwl
 #sidebar options
 php artisan addoption --option_name=sites --option_title=WordPress_Sites --option_value=/sites --option_category=sidebar --option_order=1 --option_privileges=all
 php artisan addoption --option_name=plugins --option_title=premium_plugins --option_value=/premium_plugins --option_category=sidebar --option_order=10 --option_privileges=all
-php artisan addoption --option_name=phpmyadmin --option_title=phpmyadmin --option_value=http://localhost:8080 --option_category=sidebar --option_order=12 --option_privileges=all
+php artisan addoption --option_name=phpmyadmin --option_title=phpmyadmin --option_value=/phpmyadmin_panel --option_category=sidebar --option_order=12 --option_privileges=all
 php artisan addoption --option_name=phpinfo --option_title=phpinfo --option_value=/phpinfo_panel --option_category=sidebar --option_order=13 --option_privileges=all
 
 mkdir -p $pete_route/public/uploads
@@ -83,5 +83,8 @@ cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --
 else
 cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=none
 fi
+
 apachectl -DFOREGROUND
+#systemctl start
+#/etc/init.d/apache2 reload
 echo "Loading apache..."

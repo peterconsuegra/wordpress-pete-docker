@@ -8,6 +8,7 @@ RUN echo COMPOSE_FILE
 # Install apache and php7
 RUN apt-get update && \
     apt-get -y install \
+	    sudo \
 	    nodejs \
 		npm \
 		curl \
@@ -53,6 +54,9 @@ RUN apt-get install -y software-properties-common
 RUN apt-add-repository ppa:ondrej/php
 RUN apt update
 
+#SET SUDO PASSWORD
+#RUN echo "root:Docker!" | chpasswd
+
 RUN apt-get --assume-yes install php7.2 php7.2-common
 RUN apt-get --assume-yes install php7.2-curl php7.2-xml php7.2-zip php7.2-gd php7.2-mysql php7.2-mbstring php7.2-imagick
 RUN a2enmod php7.2
@@ -97,6 +101,8 @@ RUN mkdir -p /etc/apache2/pete-sites
 RUN echo "Include /etc/apache2/pete-sites/*.conf" >> /etc/apache2/apache2.conf
 
 RUN echo "www-data ALL=NOPASSWD: /etc/init.d/apache2 reload" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2dismod" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2enmod" >> /etc/sudoers
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
