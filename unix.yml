@@ -17,7 +17,6 @@ services:
     volumes:
       - ./public_html:/var/www/html
       - ./conf:/etc/apache2/pete-sites
-      - ./apache/error.log:/var/log/apache2/error.log
     container_name: apache
   mysql:
     build:
