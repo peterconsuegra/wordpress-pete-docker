@@ -5,6 +5,7 @@ if [ ! -f "$FILE" ]; then
 
 rm -rf /var/www/html/Pete4	
 git clone -b 4 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete4 && echo "cloned"
+cd /var/www/html/Pete4
 git fetch --tags
 git checkout tags/4.2
 
