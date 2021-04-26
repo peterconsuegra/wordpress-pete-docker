@@ -126,6 +126,8 @@ USER www-data
 
 ARG ENVIRONMENT
 ENV ENVIRONMENTENV=$ENVIRONMENT
+ARG PETE_INSTALL_VERSION
+ENV PETE_INSTALL_VERSION=$PETE_INSTALL_VERSION
 
 COPY pete_install.sh /usr/local/bin/pete_install.sh
 ENTRYPOINT ["sh","/usr/local/bin/pete_install.sh"]
