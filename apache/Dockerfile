@@ -99,8 +99,6 @@ RUN mkdir -p /etc/apache2/pete-sites
 RUN echo "Include /etc/apache2/pete-sites/*.conf" >> /etc/apache2/apache2.conf
 
 RUN echo "www-data ALL=NOPASSWD: /etc/init.d/apache2 reload" >> /etc/sudoers
-RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2dismod" >> /etc/sudoers
-RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2enmod" >> /etc/sudoers
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
