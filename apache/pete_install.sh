@@ -2,6 +2,10 @@
 
 FILE=/var/www/html/.installed
 if [ ! -f "$FILE" ]; then
+	
+echo "#######################################"
+echo "Starting WordPress Pete installation..."
+echo "#######################################"
 
 rm -rf /var/www/html/Pete4	
 git clone -b 4 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete4 && echo "cloned"
@@ -74,9 +78,16 @@ composer dump-autoload
 echo "done" > /var/www/html/.installed
 /etc/init.d/apache2 reload
 
+echo "#######################################"
+echo "WorPress Pete installation completed"
+echo "#######################################"
+
 fi
 
-echo "Launching apache..."
+echo "#######################################"
+echo "Launching WordPress Pete..."
+echo "#######################################"
+
 sleep 15
 if test "$ENVIRONMENTENV" = 'development'; then
 cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=petelocal.net
