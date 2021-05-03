@@ -46,7 +46,7 @@ php artisan key:generate
 php artisan migrate
 
 #general options
-php artisan addoption --option_name=os --option_value=docker
+php artisan addoption --option_name=os --option_value=$OS
 php artisan addoption --option_name=parent_version --option_value=4
 php artisan addoption --option_name=version --option_value=$PETE_INSTALL_VERSION
 php artisan addoption --option_name=app_root --option_value=/var/www/html
