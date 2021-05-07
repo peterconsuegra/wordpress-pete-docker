@@ -19,6 +19,7 @@ services:
     volumes:
       - ./public_html:/var/www/html
       - ./conf:/etc/apache2/pete-sites
+      - ./ssh:/var/www/.ssh
     container_name: apache
   mysql:
     build:

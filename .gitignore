@@ -1,6 +1,7 @@
 data/*
 public_html/*
 conf/*
+ssh/*
 mysql/data/*
 !conf/pete.conf
 !public_html/index.php

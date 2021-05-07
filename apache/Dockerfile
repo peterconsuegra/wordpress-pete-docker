@@ -91,6 +91,7 @@ COPY src/000-default.conf /etc/apache2/sites-available
 COPY src/mpm_prefork.conf /etc/apache2/mods-available
 COPY src/status.conf      /etc/apache2/mods-available
 COPY src/99-pete.ini     /etc/php/7.4/apache2/conf.d
+COPY src/ssh_config     /etc/ssh/ssh_config
 
 #RUN a2ensite example1
 
@@ -104,6 +105,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
+#RUN chmod 400 -R /var/www/.ssh
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 # Expose details about this docker image

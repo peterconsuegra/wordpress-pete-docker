@@ -95,6 +95,9 @@ else
 cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=none
 fi
 
+chmod 600 -R /var/www/.ssh/id_rsa
+chmod 600 -R /var/www/.ssh/id_rsa.pub
+
 apachectl -DFOREGROUND
 #systemctl start
 #/etc/init.d/apache2 reload
