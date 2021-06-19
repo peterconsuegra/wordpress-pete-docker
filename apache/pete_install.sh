@@ -95,6 +95,12 @@ else
 cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=none
 fi
 
+
+FILE=/var/www/.ssh/id_rsa.pub
+if [ ! -f "$FILE" ]; then
+   ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+fi
+
 chmod 600 -R /var/www/.ssh/id_rsa
 chmod 600 -R /var/www/.ssh/id_rsa.pub
 
