@@ -18,6 +18,26 @@ git checkout tags/$PETE_INSTALL_VERSION
 
 mkdir -p /etc/apache2/pete-sites
 
+echo "
+<VirtualHost *:80>
+
+	ServerName pete.petelocal.net
+
+    DocumentRoot /var/www/html/Pete4/public
+    <Directory /var/www/html/Pete4/public>
+	DirectoryIndex index.php
+    Options Indexes FollowSymLinks
+      AllowOverride All
+      Require all granted
+    </Directory>
+    
+    # Send apache logs to stdout and stderr
+    ErrorLog /var/www/html/wwwlog/Pete4/error.log
+    CustomLog /var/www/html/wwwlog/Pete4/access.log combined
+</VirtualHost>
+
+" > /etc/apache2/pete-sites/pete.conf
+
 pete_route=/var/www/html/Pete4
 route=/var/www/html
 conf_route=/etc/apache2/pete-sites
