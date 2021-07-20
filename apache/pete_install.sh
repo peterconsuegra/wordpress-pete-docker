@@ -16,6 +16,8 @@ git checkout tags/$PETE_INSTALL_VERSION
 #Hack wait 300 seconds to mysql be alive
 #sleep 300
 
+mkdir -p /etc/apache2/pete-sites
+
 pete_route=/var/www/html/Pete4
 route=/var/www/html
 conf_route=/etc/apache2/pete-sites
