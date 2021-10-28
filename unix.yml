@@ -29,9 +29,7 @@ services:
       networks:
         - backend
       volumes: 
-        - ./var/lib/mysql/data:/etc/mysql/data
-        - ./var/lib/mysql/logs:/etc/mysql/logs
-        - ./var/docker/mariadb/conf:/etc/mysql
+        - data:/var/lib/mysql
       environment:
         MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
         MYSQL_DATABASE: ${DB_NAME}
