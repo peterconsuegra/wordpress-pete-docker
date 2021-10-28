@@ -29,7 +29,7 @@ services:
       networks:
         - backend
       volumes: 
-        - data:/var/lib/mysql
+        - ./data:/var/lib/mysql
       environment:
         MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
         MYSQL_DATABASE: ${DB_NAME}
