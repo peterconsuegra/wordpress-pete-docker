@@ -6,3 +6,13 @@ mysql/data/*
 !conf/pete.conf
 !public_html/index.php
 .DS_Store
+
+
+var/lib/mysql/data/*
+!var/lib/mysql/data/.gitkeep 
+
+var/lib/mysql/logs/*
+!var/lib/mysql/logs/.gitkeep
+
+var/docker/mariadb/conf/*
+!var/docker/mariadb/conf/.gitkeep
