@@ -24,12 +24,12 @@ innodb_buffer_pool_size = 128M
 #secure-file-priv=/var/lib/mysql-files
 #user=mysql
 
-key_buffer_size = 20M
-innodb_buffer_pool_instances = 16
-long_query_time = 1
-max_heap_table_size = 256M
-thread_cache_size = 0
-join_buffer_size = 1M
+#key_buffer_size = 20M
+#innodb_buffer_pool_instances = 16
+#long_query_time = 1
+#max_heap_table_size = 256M
+#thread_cache_size = 0
+#join_buffer_size = 1M
 
 # Disabling symbolic-links is recommended to prevent assorted security risks
 #symbolic-links=0

@@ -59,25 +59,25 @@ RUN apt-get --assume-yes install php7.2 php7.2-common
 RUN apt-get --assume-yes install php7.2-curl php7.2-xml php7.2-zip php7.2-gd php7.2-mysql php7.2-mbstring php7.2-imagick
 RUN a2enmod php7.2
 RUN ln -sfn /usr/bin/php7.2 /etc/alternatives/php
-RUN find /etc/php/7.2/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
-RUN find /etc/php/7.2/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 50M/g' {} \;
-RUN find /etc/php/7.2/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
+RUN find /etc/php/7.2/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' {} \;
+RUN find /etc/php/7.2/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 500M/g' {} \;
+RUN find /etc/php/7.2/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 900M/g' {} \;
 	
 RUN apt-get --assume-yes install php7.3 php7.3-common
 RUN apt-get --assume-yes install php7.3-curl php7.3-xml php7.3-zip php7.3-gd php7.3-mysql php7.3-mbstring php7.3-imagick
 RUN a2enmod php7.3
 RUN ln -sfn /usr/bin/php7.3 /etc/alternatives/php
-RUN find /etc/php/7.3/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
-RUN find /etc/php/7.3/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 50M/g' {} \;
-RUN find /etc/php/7.3/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
+RUN find /etc/php/7.3/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' {} \;
+RUN find /etc/php/7.3/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 500M/g' {} \;
+RUN find /etc/php/7.3/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 900M/g' {} \;
 
 RUN apt-get --assume-yes install php7.4 php7.4-common
 RUN apt-get --assume-yes install php7.4-curl php7.4-xml php7.4-zip php7.4-gd php7.4-mysql php7.4-mbstring php7.4-imagick
 RUN a2enmod php7.4
 RUN ln -sfn /usr/bin/php7.4 /etc/alternatives/php
-RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
-RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 50M/g' {} \;
-RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
+RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' {} \;
+RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 500M/g' {} \;
+RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 900M/g' {} \;
 
 RUN a2dismod php7.2
 RUN a2dismod php7.3
