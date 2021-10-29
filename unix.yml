@@ -30,6 +30,7 @@ services:
         - backend
       volumes: 
         - my-datavolume:/var/lib/mysql
+        - ./mariadb/unix_my.cnf:/etc/mysql/conf.d/unix_my.cnf
       environment:
         MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
         MYSQL_DATABASE: ${DB_NAME}

@@ -14,9 +14,9 @@ innodb_buffer_pool_size = 128M
 # Remove leading # to set options mainly useful for reporting servers.
 # The server defaults are faster for transactions and fast SELECTs.
 # Adjust sizes as needed, experiment to find the optimal values.
-join_buffer_size = 2048M
-sort_buffer_size = 4M
-read_rnd_buffer_size = 400M
+#join_buffer_size = 2048M
+#sort_buffer_size = 4M
+#read_rnd_buffer_size = 400M
 #skip-host-cache
 #skip-name-resolve
 #datadir=/var/lib/mysql
@@ -24,12 +24,21 @@ read_rnd_buffer_size = 400M
 #secure-file-priv=/var/lib/mysql-files
 #user=mysql
 
+key_buffer_size = 20M
+innodb_buffer_pool_instances = 16
+long_query_time = 1
+max_heap_table_size = 256M
+thread_cache_size = 0
+join_buffer_size = 1M
+
 # Disabling symbolic-links is recommended to prevent assorted security risks
 #symbolic-links=0
 
 #log-error=/var/log/mysqld.log
 #pid-file=/var/run/mysqld/mysqld.pid
 
-max_allowed_packet=2147483648
+max_allowed_packet=1073741824
 max_connections=4096
+
+[mariadb]
 wait_timeout=31536000
