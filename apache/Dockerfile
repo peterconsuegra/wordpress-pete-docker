@@ -52,7 +52,7 @@ RUN apt update
 RUN apt install -y curl wget gnupg2 ca-certificates lsb-release apt-transport-https
 RUN apt-get install -y software-properties-common
 RUN apt-add-repository ppa:ondrej/php
-RUN apt update
+RUN apt update --fix-missing
 
 
 RUN apt-get --assume-yes install php7.2 php7.2-common
