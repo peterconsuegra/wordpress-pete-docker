@@ -1,4 +1,4 @@
-ARG MYSQL_VERSION
+#ARG MYSQL_VERSION
 FROM mysql:5.7
 
 RUN mkdir -p /data/application

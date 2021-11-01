@@ -30,5 +30,5 @@
 #log-error=/var/log/mysqld.log
 #pid-file=/var/run/mysqld/mysqld.pid
 
-max_allowed_packet=32505856
+max_allowed_packet=1GB
 max_connections=4096

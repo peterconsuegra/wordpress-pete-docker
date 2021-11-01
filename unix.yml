@@ -22,9 +22,8 @@ services:
       - ./ssh:/var/www/.ssh
     container_name: apache
   mysql:
-    build:
-      context: './mysql'
-    command: --init-file /data/application/init.sql
+    platform: linux/x86_64
+    image: mysql:8
     restart: always
     ports:
       - "3306:3306"
@@ -36,9 +35,9 @@ services:
       MYSQL_USER: "${DB_USERNAME}"
       MYSQL_PASSWORD: "${DB_PASSWORD}"
     volumes:
-            - ./mysql/data:/var/lib/mysql
-            - ./mysql/init.sql:/data/application/init.sql
-            - ./mysql/unix_my.cnf:/etc/my.cnf
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init.sql:/data/application/init.sql
+      - ./mysql/unix_my.cnf:/etc/my.cnf
     container_name: mysql
   phpmyadmin:
     depends_on:

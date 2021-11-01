@@ -10,8 +10,8 @@ echo "#######################################"
 rm -rf /var/www/html/Pete4	
 git clone -b 4 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete4 && echo "cloned"
 cd /var/www/html/Pete4
-git fetch --tags
-git checkout tags/$PETE_INSTALL_VERSION
+#git fetch --tags
+#git checkout tags/$PETE_INSTALL_VERSION
 
 #Hack wait 300 seconds to mysql be alive
 #sleep 300
