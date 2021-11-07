@@ -1,0 +1,58 @@
+version: "3.2"
+services:
+  apache:
+    build:
+      context: './apache/'
+      args:
+       PHP_VERSION: ${PHP_VERSION}
+       ENVIRONMENT: ${ENVIRONMENT}
+       PETE_INSTALL_VERSION: ${PETE_INSTALL_VERSION}
+       OS: unix
+    depends_on:
+      - mariadb
+    environment:
+      DB_HOST: mysql
+    networks:
+      - backend
+    ports:
+      - "80:80"
+    volumes:
+      - ./public_html:/var/www/html
+      - ./conf:/etc/apache2/pete-sites
+      - ./ssh:/var/www/.ssh
+    container_name: apache
+  mariadb:
+      image: "amd64/mariadb:${MARIADB_VERSION}"
+      restart: 'always'
+      ports:
+        - "3306:3306"
+      networks:
+        - backend
+      volumes: 
+        - my-datavolume:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+        MYSQL_DATABASE: ${DB_NAME}
+        MYSQL_USER: ${DB_USERNAME}
+        MYSQL_PASSWORD: ${DB_PASSWORD}
+      container_name: mysql
+  phpmyadmin:
+    depends_on:
+      - mariadb
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    links:
+      - "mariadb"
+    environment:
+      PMA_HOST: "mysql"
+      PMA_PORT: "3306"
+      UPLOAD_LIMIT: "256M"
+      container_name: phpmyadmin
+    networks:
+      - backend
+networks:
+  backend:
+volumes:
+    my-datavolume:
