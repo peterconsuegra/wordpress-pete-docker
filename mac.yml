@@ -7,7 +7,7 @@ services:
        PHP_VERSION: ${PHP_VERSION}
        ENVIRONMENT: ${ENVIRONMENT}
        PETE_INSTALL_VERSION: ${PETE_INSTALL_VERSION}
-       OS: unix
+       OS_VERSION: "ubuntu:focal"
     depends_on:
       - mariadb
     environment:

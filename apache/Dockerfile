@@ -1,4 +1,5 @@
-FROM amd64/ubuntu:focal
+ARG OS_VERSION
+FROM ${OS_VERSION}
 LABEL Author="Pedro Consuegra" Description="A comprehensive docker image to run Apache-2.4 PHP applications like Wordpress, Laravel or WordPres+Laravel"
 
 # Stop dpkg-reconfigure tzdata from prompting for input
