@@ -8,6 +8,13 @@ services:
        ENVIRONMENT: ${ENVIRONMENT}
        PETE_INSTALL_VERSION: ${PETE_INSTALL_VERSION}
        OS_VERSION: "amd64/ubuntu:focal"
+	   PHP_VERSION: 7.4
+	   PETE_INSTALL_VERSION: 4.11
+	   ENVIRONMENT: "development"
+	   DB_ROOT_PASSWORDrootpassword
+	   DB_NAME=pete_db
+	   DB_USERNAME=otherUser
+	   DB_PASSWORD=password
        OS: unix
     depends_on:
       - mariadb
@@ -32,8 +39,8 @@ services:
       volumes: 
         - my-datavolume:/var/lib/mysql
       environment:
-        MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${DB_NAME}
+        MYSQL_ROOT_PASSWORD: rootpassword
+        MYSQL_DATABASE: pete_db
         MYSQL_USER: ${DB_USERNAME}
         MYSQL_PASSWORD: ${DB_PASSWORD}
       container_name: mysql
