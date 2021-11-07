@@ -4,17 +4,10 @@ services:
     build:
       context: './apache/'
       args:
-       PHP_VERSION: ${PHP_VERSION}
-       ENVIRONMENT: ${ENVIRONMENT}
-       PETE_INSTALL_VERSION: ${PETE_INSTALL_VERSION}
+       PHP_VERSION: "7.4"
+       ENVIRONMENT: "development"
+       PETE_INSTALL_VERSION: "4.11"
        OS_VERSION: "amd64/ubuntu:focal"
-	   PHP_VERSION: 7.4
-	   PETE_INSTALL_VERSION: 4.11
-	   ENVIRONMENT: "development"
-	   DB_ROOT_PASSWORDrootpassword
-	   DB_NAME=pete_db
-	   DB_USERNAME=otherUser
-	   DB_PASSWORD=password
        OS: unix
     depends_on:
       - mariadb
@@ -30,7 +23,7 @@ services:
       - ./ssh:/var/www/.ssh
     container_name: apache
   mariadb:
-      image: "amd64/mariadb:${MARIADB_VERSION}"
+      image: "amd64/mariadb:10.5"
       restart: 'always'
       ports:
         - "3306:3306"
@@ -41,8 +34,8 @@ services:
       environment:
         MYSQL_ROOT_PASSWORD: rootpassword
         MYSQL_DATABASE: pete_db
-        MYSQL_USER: ${DB_USERNAME}
-        MYSQL_PASSWORD: ${DB_PASSWORD}
+        MYSQL_USER: otherUser
+        MYSQL_PASSWORD: password
       container_name: mysql
   phpmyadmin:
     depends_on:

@@ -89,12 +89,8 @@ echo "Launching WordPress Pete..."
 echo "#######################################"
 
 sleep 15
-if test "$ENVIRONMENTENV" = 'development'; then
-cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=petelocal.net
-else
-cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=none
-fi
 
+cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=$DOMAIN_TEMPLATE
 
 FILE=/var/www/.ssh/id_rsa.pub
 if [ ! -f "$FILE" ]; then

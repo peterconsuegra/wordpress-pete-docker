@@ -4,9 +4,9 @@ services:
     build:
       context: './apache/'
       args:
-       PHP_VERSION: ${PHP_VERSION}
-       ENVIRONMENT: ${ENVIRONMENT}
-       PETE_INSTALL_VERSION: ${PETE_INSTALL_VERSION}
+       PHP_VERSION: "7.4"
+       DOMAIN_TEMPLATE: "petelocal.net"
+       PETE_INSTALL_VERSION: "4.11"
        OS_VERSION: "ubuntu:focal"
     depends_on:
       - mariadb
