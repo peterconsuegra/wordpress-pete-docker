@@ -19,6 +19,7 @@ git checkout tags/$PETE_INSTALL_VERSION
 pete_route=/var/www/html/Pete4
 route=/var/www/html
 conf_route=/etc/apache2/pete-sites
+mkdir $conf_route
 
 cd $pete_route
 rm -rf auth.json
@@ -46,7 +47,7 @@ php artisan key:generate
 php artisan migrate
 
 #general options
-php artisan addoption --option_name=os --option_value=$OS
+php artisan addoption --option_name=os --option_value=docker
 php artisan addoption --option_name=parent_version --option_value=4
 php artisan addoption --option_name=version --option_value=$PETE_INSTALL_VERSION
 php artisan addoption --option_name=app_root --option_value=/var/www/html
