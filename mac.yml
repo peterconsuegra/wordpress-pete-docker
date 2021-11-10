@@ -6,7 +6,7 @@ services:
       args:
        PHP_VERSION: "7.4"
        DOMAIN_TEMPLATE: "petelocal.net"
-       PETE_INSTALL_VERSION: "4.11"
+       PETE_INSTALL_VERSION: "4.12"
        OS_VERSION: "ubuntu:focal"
     depends_on:
       - mariadb
@@ -22,7 +22,7 @@ services:
       - ./ssh:/var/www/.ssh
     container_name: apache
   mariadb:
-      image: "mariadb:${MARIADB_VERSION}"
+      image: "mariadb:10.6"
       restart: 'always'
       ports:
         - "3306:3306"
@@ -31,10 +31,10 @@ services:
       volumes: 
         - my-datavolume:/var/lib/mysql
       environment:
-        MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${DB_NAME}
-        MYSQL_USER: ${DB_USERNAME}
-        MYSQL_PASSWORD: ${DB_PASSWORD}
+        MYSQL_ROOT_PASSWORD: rootpassword
+        MYSQL_DATABASE: pete_db
+        MYSQL_USER: otherUser
+        MYSQL_PASSWORD: password
       container_name: mysql
   phpmyadmin:
     depends_on:
