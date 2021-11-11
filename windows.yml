@@ -21,30 +21,34 @@ services:
       - ./conf:/etc/apache2/pete-sites
       - ./ssh:/var/www/.ssh
     container_name: apache
-  mariadb:
-      image: "mariadb:10.6"
-      restart: 'always'
-      ports:
-        - "3306:3306"
-      networks:
-        - backend
-      volumes: 
-        - my-datavolume:/var/lib/mysql
-      environment:
-        MYSQL_ROOT_PASSWORD: rootpassword
-        MYSQL_DATABASE: pete_db
-        MYSQL_USER: otherUser
-        MYSQL_PASSWORD: password
-      container_name: mysql
+  mysql:
+    build:
+      context: './mysql'
+    command: --init-file /data/application/init.sql
+    restart: always
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+            - ./mysql/data:/var/lib/mysql
+            - ./mysql/init.sql:/data/application/init.sql
+            - ./mysql/windows_my.cnf:/etc/my.cnf
+    container_name: mysql
   phpmyadmin:
     depends_on:
-      - mariadb
+      - mysql
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
       - '8080:80'
     links:
-      - "mariadb"
+      - "mysql"
     environment:
       PMA_HOST: "mysql"
       PMA_PORT: "3306"
@@ -55,4 +59,4 @@ services:
 networks:
   backend:
 volumes:
-  my-datavolume:
+    data:
