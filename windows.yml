@@ -31,10 +31,10 @@ services:
     networks:
       - backend
     environment:
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-      MYSQL_DATABASE: "${DB_NAME}"
-      MYSQL_USER: "${DB_USERNAME}"
-      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pete_db
+      MYSQL_USER: otherUser
+      MYSQL_PASSWORD: password
     volumes:
             - ./mysql/data:/var/lib/mysql
             - ./mysql/init.sql:/data/application/init.sql
