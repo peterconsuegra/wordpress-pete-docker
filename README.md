@@ -1,107 +1,41 @@
-# WordPres Pete
+<img src="https://raw.githubusercontent.com/peterconsuegra/wordpress-pete-docker/master/wiki/pete.png" alt="WordPres Laravel Integration" width="250"/>
 
-WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone WordPress sites in minutes.
+# WordPress efficiency starts here. Integrate Laravel, migrate, launch, or clone WordPress sites in minutes.
 
-![alt text](https://raw.githubusercontent.com/peterconsuegra/wordpress-pete-docker/master/apache/petelogo.png "WordPress Pete Logo")
+WordPress Pete is a local and production server environment that can be installed in macOS, Windows and Linux with just a few clicks.
 
-# Install instructions
+Migrating, launching, integrating, or cloning a WordPress site has never been easier.
 
-## MacOS & Linux
+**WordPress + Laravel**
 
-1. Install docker
-2. Install GIT
-3. Open terminal
-4. Stop default apache server in macOs:
-
-⋅⋅⋅ sudo -S apachectl stop
-
-⋅⋅⋅ sudo -S launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
-
-5. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
-6. cd wordpress-pete-docker
-7. docker-compose -f unix.yml up --build
-8. Wait until wordPress Pete migrations finish
-9. open: http://pete.petelocal.net/
-
-Check the installation video for macOS:
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=_DWmv0Mqrhk
-" target="_blank"><img src="http://img.youtube.com/vi/_DWmv0Mqrhk/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
-
-__Access to apache container console:__
-
-docker-compose -f unix.yml exec apache /bin/sh 
-
-__Access to mysql container console:__
-
-docker-compose -f unix.yml exec mysql /bin/sh 
-
-docker exec -it mysql mysql -uroot -prootpassword
-
-__Stop docker:__
-
-docker-compose -f unix.yml down
+Imagine powering the front end of your website in WordPress while managing content, payments, subscriptions, advanced tools, and custom dashboard in the powerful MVC framework Laravel (5.5+,6,7,8) Picture being able to deploy this robust development environment in just a few clicks — with the portability that you need to deploy across multiple servers. It’s here and it’s called WordPress Pete.
 
 
-## Windows
+**Installers**
 
-1. Install docker
-2. Activate container Hyper-V in docker
-3. Install GIT
-4. git config --global core.autocrlf true (For compatibility, line endings are converted to Unix style when you commit files)
-5. Open terminal
-6. git clone https://github.com/peterconsuegra/wordpress-pete-docker.git
-7. cd wordpress-pete-docker  
-8. docker-compose -f windows.yml up --build
-9. Wait until wordPress Pete migrations finish
-10. open: http://pete.petelocal.net/
+[Install WordPres Pete on MacOs](https://wordpresspete.com/wordpresspete-mac-osx-installation/)
 
-Check the installation video for Windows:
+[Install WordPres Pete on Windows](https://wordpresspete.com/wordpresspete-windows-installation/)
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=ML8NNVGfq8I
-" target="_blank"><img src="http://img.youtube.com/vi/ML8NNVGfq8I/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+[Install WordPres Pete on Google Cloud](https://wordpresspete.com/wordpresspete-google-cloud-installation/)
+
+[Install WordPres Pete on Linode Cloud](https://wordpresspete.com/wordpresspete-linode-installation/)
+
+[Install WordPress Pete on Ubuntu VPS](https://wordpresspete.com/wordpresspete-linux-installation/)
 
 
-__Access to apache container console:__
+**Tutorials**
 
-docker-compose -f windows.yml exec apache /bin/sh 
+*Yes, WordPress Pete is the best in some tasks! and can save you tons of time*
 
-__Access to mysql container console:__
+[The best way to migrate a WordPress site](https://github.com/peterconsuegra/wordpress-pete-docker/wiki/The-Best-Way-to-Migrate-a-WordPress-Site)
 
-docker-compose -f windows.yml exec mysql /bin/sh 
+[The best way to clone a WordPress site](https://github.com/peterconsuegra/wordpress-pete-docker/wiki/The-Best-Way-to-Clone-a-WordPress-Site)
 
-__Stop docker:__
+[The best way to integrate a WordPress site width laravel](https://github.com/peterconsuegra/wordpress-pete-docker/wiki/The-Best-Way-to-Integrate-a-WordPress-Site-width-Laravel)
 
-docker-compose -f windows.yml down
+[The best way to deploy a WordPress site](https://github.com/peterconsuegra/wordpress-pete-docker/wiki/the-best-way-to-deploy-a-wordpress-site)
 
-## Docker settings
-
-You can change the docker settings from .env file:
-
-Supported php versions: 7.2, 7.3, 7.4
-
-Change the environment to production to allow domains other than * .petelocal.net
-
-MYSQL Note: When you change the values of the DB_ROOT_PASSWORD in the .env file you must also do it in the /public_html/Pete4/.env file and in every WordPress or Laraval config file you’ve created.
-
-PHP_VERSION=7.4
-
-ENVIRONMENT=development
-
-DB_ROOT_PASSWORD=rootpassword
-
-DB_NAME=pete_db
-
-DB_USERNAME=otherUser
-
-DB_PASSWORD=password
-
-## More
-
-1. https://wordpresspete.com
-2. https://wordpresspete.com/tutorials
 
 
 
