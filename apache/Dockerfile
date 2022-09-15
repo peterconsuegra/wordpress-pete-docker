@@ -77,7 +77,7 @@ RUN apt-get --assume-yes install php7.4-curl php7.4-xml php7.4-zip php7.4-gd php
 RUN a2enmod php7.4
 RUN ln -sfn /usr/bin/php7.4 /etc/alternatives/php
 RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
-RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 50M/g' {} \;
+RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/post_max_size = 8M/post_max_size = 50M/g' {} \;
 RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
 
 RUN a2dismod php7.2
@@ -120,6 +120,9 @@ RUN rm -f /var/www/html/index.html && \
 RUN mkdir -p /var/www/html/wwwlog
 RUN chown -R www-data:www-data /var/www
 RUN chown -R www-data:www-data /etc/apache2/mods-enabled
+
+RUN apt-get update && apt-get install -y python3-pip
+
 
 
 EXPOSE 80
