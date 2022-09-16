@@ -7,9 +7,9 @@ echo "#######################################"
 echo "Starting WordPress Pete installation..."
 echo "#######################################"
 
-rm -rf /var/www/html/Pete4	
-git clone -b 4 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete4 && echo "cloned"
-cd /var/www/html/Pete4
+rm -rf /var/www/html/Pete	
+git clone -b 5 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete && echo "cloned"
+cd /var/www/html/Pete
 
 # Checkout latest tag
 git fetch --tags
@@ -19,7 +19,7 @@ git checkout $latestTag
 #Hack wait 300 seconds to mysql be alive
 #sleep 300
 
-pete_route=/var/www/html/Pete4
+pete_route=/var/www/html/Pete
 route=/var/www/html
 conf_route=/etc/apache2/pete-sites
 mkdir $conf_route
@@ -51,7 +51,7 @@ php artisan migrate
 
 #general options
 php artisan addoption --option_name=os --option_value=docker
-php artisan addoption --option_name=parent_version --option_value=4
+php artisan addoption --option_name=parent_version --option_value=5
 php artisan addoption --option_name=version --option_value=$latestTag
 php artisan addoption --option_name=app_root --option_value=/var/www/html
 php artisan addoption --option_name=server_conf --option_value=$conf_route
@@ -75,7 +75,7 @@ mkdir -p $pete_route/storage
 mkdir -p $pete_route/storage/logs
 touch $pete_route/storage/logs/laravel.log
 
-mkdir -p /var/www/html/wwwlog/Pete4
+mkdir -p /var/www/html/wwwlog/Pete
 mkdir -p /var/www/html/wwwlog/example1
 composer dump-autoload
 
@@ -94,7 +94,7 @@ echo "#######################################"
 
 sleep 15
 
-cd /var/www/html/Pete4 && php artisan addoption --option_name=domain_template --option_value=$DOMAIN_TEMPLATE
+cd /var/www/html/Pete && php artisan addoption --option_name=domain_template --option_value=$DOMAIN_TEMPLATE
 
 FILE=/var/www/.ssh/id_rsa.pub
 if [ ! -f "$FILE" ]; then
