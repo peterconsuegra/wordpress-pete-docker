@@ -85,6 +85,7 @@ RUN a2dismod php7.3
 RUN a2dismod php7.4
 ARG PHP_VERSION
 RUN a2enmod php${PHP_VERSION}
+RUN sudo a2enmod ssl
 
 # Override default apache and php config
 COPY src/000-default.conf /etc/apache2/sites-available
