@@ -103,6 +103,11 @@ RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2dismod" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2enmod" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2disconf" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2enconf" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /usr/bin/update-alternatives" >> /etc/sudoers
+
+#Set php 7.4 in console by default 
+RUN echo 1 | sudo update-alternatives --config php
+
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

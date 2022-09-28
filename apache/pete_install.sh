@@ -77,7 +77,7 @@ touch $pete_route/storage/logs/laravel.log
 
 mkdir -p /var/www/html/wwwlog/Pete
 mkdir -p /var/www/html/wwwlog/example1
-composer dump-autoload
+composer dump-autoload --ignore-platform-reqs
 
 echo "done" > /var/www/html/.installed
 /etc/init.d/apache2 reload
