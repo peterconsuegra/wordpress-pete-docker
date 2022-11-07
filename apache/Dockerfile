@@ -104,6 +104,7 @@ RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2enmod" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2disconf" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2enconf" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/bin/update-alternatives" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /usr/bin/sed" >> /etc/sudoers
 
 #Set php 7.4 in console by default 
 RUN echo 1 | sudo update-alternatives --config php
@@ -115,6 +116,38 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar
 #RUN chmod 400 -R /var/www/.ssh
 RUN mv wp-cli.phar /usr/local/bin/wp
+
+#MOD SECURITY CONFIGURATION
+RUN apt-get -y install libapache2-mod-security2
+RUN a2enmod security2
+RUN cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+
+#installing mod_security rules
+RUN cd /etc/modsecurity && git clone https://github.com/coreruleset/coreruleset.git
+RUN cd /etc/modsecurity/coreruleset && git checkout v3.3/master
+RUN mv /etc/modsecurity/coreruleset/crs-setup.conf.example /etc/modsecurity/crs-setup.conf
+RUN mv /etc/modsecurity/coreruleset/rules/ /etc/modsecurity/
+
+RUN rm -rf /etc/apache2/mods-available/security2.conf
+
+RUN echo 'SecAuditLogFormat JSON' >> /etc/modsecurity/modsecurity.conf
+RUN find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' {} \;
+#RUN echo "SecStatusEngine Off" >> /etc/modsecurity/modsecurity.conf
+
+#RUN mkdir -p /var/log/apache2
+RUN touch /var/log/apache2/modsec_audit.log
+RUN touch /var/log/apache2/error_log
+
+
+#RUN chmod 0644 /var/log/apache2/modsec_audit.log
+#RUN chmod 0600 /var/log/apache2/error_log
+COPY security2.conf /etc/apache2/mods-available/security2.conf
+COPY whitelist.conf /etc/modsecurity/rules/whitelist.conf
+RUN chmod -R 755 /var/log/apache2
+RUN chown -R www-data:www-data /var/log/apache2
+RUN rm /etc/modsecurity/rules/REQUEST-922-MULTIPART-ATTACK.conf
+RUN chown -R www-data:www-data /etc/apache2/pete-sites
+RUN chmod -R 755 /etc/apache2/pete-sites
 
 # Expose details about this docker image
 COPY src/index.php /var/www/html
