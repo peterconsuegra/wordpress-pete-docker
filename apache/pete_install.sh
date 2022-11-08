@@ -82,6 +82,9 @@ echo "#######################################"
 echo "WorPress Pete installation completed"
 echo "#######################################"
 
+cd /var/www/html/Pete/mod_sec_report && pip install -r requirements.txt
+chmod 755 /var/www/html/Pete/mod_sec_report/mod_sec_report
+
 fi
 
 echo "#######################################"

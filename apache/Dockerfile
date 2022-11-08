@@ -137,10 +137,6 @@ RUN find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine
 #RUN mkdir -p /var/log/apache2
 RUN touch /var/log/apache2/modsec_audit.log
 RUN touch /var/log/apache2/error_log
-
-
-#RUN chmod 0644 /var/log/apache2/modsec_audit.log
-#RUN chmod 0600 /var/log/apache2/error_log
 COPY security2.conf /etc/apache2/mods-available/security2.conf
 COPY whitelist.conf /etc/modsecurity/rules/whitelist.conf
 RUN chmod -R 755 /var/log/apache2
@@ -148,6 +144,9 @@ RUN chown -R www-data:www-data /var/log/apache2
 RUN rm /etc/modsecurity/rules/REQUEST-922-MULTIPART-ATTACK.conf
 RUN chown -R www-data:www-data /etc/apache2/pete-sites
 RUN chmod -R 755 /etc/apache2/pete-sites
+
+#mod_sec_report
+RUN apt --assume-yes install python3-pip
 
 # Expose details about this docker image
 COPY src/index.php /var/www/html
