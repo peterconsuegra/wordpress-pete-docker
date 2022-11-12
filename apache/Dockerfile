@@ -105,6 +105,7 @@ RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2disconf" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/sbin/a2enconf" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/bin/update-alternatives" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/bin/sed" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/securitystatus.sh" >> /etc/sudoers
 
 #Set php 7.4 in console by default 
 RUN echo 1 | sudo update-alternatives --config php
@@ -130,9 +131,10 @@ RUN mv /etc/modsecurity/coreruleset/rules/ /etc/modsecurity/
 
 RUN rm -rf /etc/apache2/mods-available/security2.conf
 
+
 RUN echo 'SecAuditLogFormat JSON' >> /etc/modsecurity/modsecurity.conf
-RUN find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' {} \;
-#RUN echo "SecStatusEngine Off" >> /etc/modsecurity/modsecurity.conf
+ARG MOD_SECURITY
+RUN if [ "$MOD_SECURITY" = "On" ] ; then find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' {} \; ; fi
 
 #RUN mkdir -p /var/log/apache2
 RUN touch /var/log/apache2/modsec_audit.log

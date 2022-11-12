@@ -51,6 +51,7 @@ php artisan migrate
 
 #general options
 php artisan addoption --option_name=os --option_value=docker
+php artisan addoption --option_name=server_status --option_value=off
 php artisan addoption --option_name=parent_version --option_value=5
 php artisan addoption --option_name=version --option_value=$latestTag
 php artisan addoption --option_name=app_root --option_value=/var/www/html
@@ -98,6 +99,12 @@ cd /var/www/html/Pete && php artisan addoption --option_name=domain_template --o
 FILE=/var/www/.ssh/id_rsa.pub
 if [ ! -f "$FILE" ]; then
    ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+fi
+
+if [ "$MOD_SECURITY" = "On" ]; then
+	cd /var/www/html/Pete && php artisan addoption --option_name=security_status --option_value=on
+else
+	cd /var/www/html/Pete && php artisan addoption --option_name=security_status --option_value=off
 fi
 
 chmod 600 -R /var/www/.ssh/id_rsa
