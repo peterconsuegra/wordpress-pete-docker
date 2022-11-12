@@ -7,7 +7,8 @@ services:
        PHP_VERSION: "7.4"
        DOMAIN_TEMPLATE: "petelocal.net"
        OS_VERSION: "amd64/ubuntu:focal"
-       MOD_SECURITY: "On"
+       MOD_SECURITY: "Off"
+       SERVER_STATUS: "On"
     depends_on:
       - mariadb
     environment:

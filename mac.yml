@@ -6,8 +6,9 @@ services:
       args:
        PHP_VERSION: "7.4"
        DOMAIN_TEMPLATE: "petelocal.net"
-       PETE_INSTALL_VERSION: "4.12"
        OS_VERSION: "ubuntu:focal"
+       MOD_SECURITY: "Off"
+       SERVER_STATUS: "On"
     depends_on:
       - mariadb
     environment:

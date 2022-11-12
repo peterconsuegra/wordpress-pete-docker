@@ -107,6 +107,15 @@ else
 	cd /var/www/html/Pete && php artisan addoption --option_name=security_status --option_value=off
 fi
 
+if [ "$SERVER_STATUS" = "On" ]; then
+	cd /var/www/html/Pete && php artisan addoption --option_name=server_status --option_value=on
+else
+	cd /var/www/html/Pete && php artisan addoption --option_name=server_status --option_value=off
+fi
+
+
+
+
 chmod 600 -R /var/www/.ssh/id_rsa
 chmod 600 -R /var/www/.ssh/id_rsa.pub
 
