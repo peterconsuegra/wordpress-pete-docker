@@ -130,6 +130,8 @@ RUN echo 'SecAuditLogFormat JSON' >> /etc/modsecurity/modsecurity.conf
 ARG MOD_SECURITY
 RUN if [ "$MOD_SECURITY" = "On" ] ; then find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' {} \; ; fi
 
+RUN if [ "$MOD_SECURITY" = "Off" ] ; then find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine Off/g' {} \; ; fi
+
 ARG SERVER_STATUS
 RUN if [ "$SERVER_STATUS" = "On" ] ; then a2enmod status ; else a2dismod status; fi
 
