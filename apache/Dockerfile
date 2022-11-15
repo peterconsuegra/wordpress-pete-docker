@@ -151,8 +151,7 @@ RUN chmod -R 755 /etc/apache2/pete-sites
 
 #mod_sec_report
 RUN apt --assume-yes install python3-pip
-#RUN cd /var/www/html/Pete/mod_sec_report && pip install -r requirements.txt
-#RUN chmod 755 /var/www/html/Pete/mod_sec_report/mod_sec_report
+RUN chown -R www-data:www-data /var/log/apache2
 
 # Expose details about this docker image
 COPY src/index.php /var/www/html
