@@ -100,6 +100,8 @@ RUN echo "Include /etc/apache2/pete-sites/*.conf" >> /etc/apache2/apache2.conf
 
 RUN echo "www-data ALL=NOPASSWD: /etc/init.d/apache2 reload" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/securitystatus.sh" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/get_mod_sec_report.sh" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/print_security_report.sh" >> /etc/sudoers
 
 #Set php 7.4 in console by default 
 RUN echo 1 | sudo update-alternatives --config php
@@ -149,6 +151,8 @@ RUN chmod -R 755 /etc/apache2/pete-sites
 
 #mod_sec_report
 RUN apt --assume-yes install python3-pip
+#RUN cd /var/www/html/Pete/mod_sec_report && pip install -r requirements.txt
+#RUN chmod 755 /var/www/html/Pete/mod_sec_report/mod_sec_report
 
 # Expose details about this docker image
 COPY src/index.php /var/www/html
