@@ -61,6 +61,7 @@ php artisan addoption --option_name=server_version --option_value=24
 php artisan addoption --option_name=os_version --option_value=bionic
 php artisan addoption --option_name=os_distribution --option_value=docker
 php artisan addoption --option_name=logs_route --option_value=/var/www/html/wwwlog
+php artisan addoption --option_name=os_stack --option_value=apache_mpm_prefork
 
 
 #sidebar options

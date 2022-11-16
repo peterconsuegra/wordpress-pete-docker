@@ -76,11 +76,20 @@ RUN	ln -sfn /usr/bin/php8.1 /etc/alternatives/php
 RUN	find /etc/php/8.1/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
 RUN	find /etc/php/8.1/apache2/php.ini -type f -exec sed -i 's/post_max_size = 8M/post_max_size = 50M/g' {} \;
 RUN	find /etc/php/8.1/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
+	
+#Set php 7.4 in console by default 
+#RUN echo 1 | sudo update-alternatives --config php
+ARG PHP_VERSION
+RUN if [ "$PHP_VERSION" = "7.4" ] ; then echo 1 | sudo update-alternatives --config php ; fi
+
+RUN if [ "$PHP_VERSION" = "8.0" ] ; then echo 2 | sudo update-alternatives --config php ; fi
+
+RUN if [ "$PHP_VERSION" = "8.1" ] ; then echo 3 | sudo update-alternatives --config php ; fi
 
 RUN a2dismod php8.0
 RUN a2dismod php8.1
 RUN a2dismod php7.4
-ARG PHP_VERSION
+
 RUN a2enmod php${PHP_VERSION}
 RUN sudo a2enmod ssl
 
@@ -99,12 +108,12 @@ RUN mkdir -p /etc/apache2/pete-sites
 RUN echo "Include /etc/apache2/pete-sites/*.conf" >> /etc/apache2/apache2.conf
 
 RUN echo "www-data ALL=NOPASSWD: /etc/init.d/apache2 reload" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/restart_server.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/securitystatus.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/get_mod_sec_report.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/print_security_report.sh" >> /etc/sudoers
 
-#Set php 7.4 in console by default 
-RUN echo 1 | sudo update-alternatives --config php
+
 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
