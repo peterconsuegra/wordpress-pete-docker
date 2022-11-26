@@ -8,13 +8,13 @@ echo "Starting WordPress Pete installation..."
 echo "#######################################"
 
 rm -rf /var/www/html/Pete	
-git clone -b 5 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete && echo "cloned"
+git clone -b 6 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/www/html/Pete && echo "cloned"
 cd /var/www/html/Pete
 
 # Checkout latest tag
-git fetch --tags
-latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-git checkout $latestTag
+# git fetch --tags
+# latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+# git checkout $latestTag
 
 #Hack wait 300 seconds to mysql be alive
 #sleep 300
@@ -45,7 +45,7 @@ PETE_ENVIRONMENT=production
 PETE_DEBUG=inactive
 " >> $pete_route/.env
 
-composer install --ignore-platform-reqs
+composer install --ignore-platform-reqs --no-plugins
 php artisan key:generate
 php artisan migrate
 
@@ -75,7 +75,7 @@ touch $pete_route/storage/logs/laravel.log
 
 mkdir -p /var/www/html/wwwlog/Pete
 mkdir -p /var/www/html/wwwlog/example1
-composer dump-autoload --ignore-platform-reqs
+composer dump-autoload --ignore-platform-reqs --no-plugins
 
 echo "done" > /var/www/html/.installed
 /etc/init.d/apache2 reload
