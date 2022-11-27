@@ -46,7 +46,7 @@ PETE_DEBUG=inactive
 " >> $pete_route/.env
 
 sudo rm -rf vendor
-composer install --ignore-platform-reqs --no-plugins
+composer install --ignore-platform-reqs 
 php artisan key:generate
 php artisan migrate
 
@@ -76,7 +76,7 @@ touch $pete_route/storage/logs/laravel.log
 
 mkdir -p /var/www/html/wwwlog/Pete
 mkdir -p /var/www/html/wwwlog/example1
-composer dump-autoload --ignore-platform-reqs --no-plugins
+composer dump-autoload --ignore-platform-reqs
 
 echo "done" > /var/www/html/.installed
 /etc/init.d/apache2 reload
@@ -125,4 +125,4 @@ chmod 600 -R /var/www/.ssh/id_rsa.pub
 apachectl -DFOREGROUND
 #systemctl start
 #/etc/init.d/apache2 reload
-echo "Loading apache..."
+echo "Loading apache...."

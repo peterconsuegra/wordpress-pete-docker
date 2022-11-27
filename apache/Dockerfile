@@ -187,6 +187,9 @@ ENV PETE_INSTALL_VERSION=$PETE_INSTALL_VERSION
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 755 /var/www/html
 
+
 COPY pete_install.sh /usr/local/bin/pete_install.sh
+RUN apt install -y dos2unix
+RUN dos2unix pete_install.sh
 ENTRYPOINT ["sh","/usr/local/bin/pete_install.sh"]
 
