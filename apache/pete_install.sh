@@ -45,6 +45,7 @@ PETE_ENVIRONMENT=production
 PETE_DEBUG=inactive
 " >> $pete_route/.env
 
+sudo rm -rf vendor
 composer install --ignore-platform-reqs --no-plugins
 php artisan key:generate
 php artisan migrate

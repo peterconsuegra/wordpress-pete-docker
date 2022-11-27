@@ -112,6 +112,7 @@ RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/restart_server.sh" >
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/securitystatus.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/get_mod_sec_report.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/print_security_report.sh" >> /etc/sudoers
+RUN echo "www-data ALL=NOPASSWD: /usr/local/bin/composer" >> /etc/sudoers
 
 
 
@@ -182,6 +183,9 @@ ARG DOMAIN_TEMPLATE
 ENV DOMAIN_TEMPLATE=$DOMAIN_TEMPLATE
 ARG PETE_INSTALL_VERSION
 ENV PETE_INSTALL_VERSION=$PETE_INSTALL_VERSION
+
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
 
 COPY pete_install.sh /usr/local/bin/pete_install.sh
 ENTRYPOINT ["sh","/usr/local/bin/pete_install.sh"]
