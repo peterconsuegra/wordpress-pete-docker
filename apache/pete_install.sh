@@ -17,7 +17,7 @@ latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 git checkout $latestTag
 
 #Hack wait 300 seconds to mysql be alive
-sleep 300
+#sleep 300
 
 pete_route=/var/www/html/Pete
 route=/var/www/html
