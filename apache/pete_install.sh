@@ -12,12 +12,12 @@ git clone -b 6 https://ozone777@bitbucket.org/ozone777/wordpresspete3.git /var/w
 cd /var/www/html/Pete
 
 # Checkout latest tag
-# git fetch --tags
-# latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-# git checkout $latestTag
+git fetch --tags
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
 
 #Hack wait 300 seconds to mysql be alive
-#sleep 300
+sleep 300
 
 pete_route=/var/www/html/Pete
 route=/var/www/html
