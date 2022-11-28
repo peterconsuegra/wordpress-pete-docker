@@ -33,6 +33,7 @@ RUN apt-get update && \
         php-uploadprogress \
         php-zip \
 		php-curl \
+        dos2unix \
 # Ensure apache can bind to 80 as non-root
         libcap2-bin && \
     setcap 'cap_net_bind_service=+ep' /usr/sbin/apache2 && \
@@ -189,7 +190,8 @@ RUN chmod -R 755 /var/www/html
 
 
 COPY pete_install.sh /usr/local/bin/pete_install.sh
-RUN apt install -y dos2unix
-RUN dos2unix pete_install.sh
+#RUN apt install -y dos2unix
+USER root
+RUN dos2unix /usr/local/bin/pete_install.sh
 ENTRYPOINT ["sh","/usr/local/bin/pete_install.sh"]
 

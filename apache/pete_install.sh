@@ -46,7 +46,7 @@ PETE_DEBUG=inactive
 " >> $pete_route/.env
 
 sudo rm -rf vendor
-composer install --ignore-platform-reqs 
+COMPOSER_CACHE_DIR=/dev/null composer install --ignore-platform-reqs --prefer-dist --no-dev
 php artisan key:generate
 php artisan migrate
 
