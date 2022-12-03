@@ -13,20 +13,21 @@ Imagine powering the front end of your website in WordPress while managing conte
 
 **Installers**
 
-[Install WordPres Pete on MacOs](https://wordpresspete.com/wordpresspete-mac-osx-installation/)
+[Install WordPres Pete on MacOs Mac Chip Installation Guide](https://wordpresspete.com/install-wordpress-on-macos-mac-chip/)
 
-[Install WordPres Pete on Windows](https://wordpresspete.com/wordpresspete-windows-installation/)
+[Install WordPres Pete on MacOs Intel Chip Installation Guide](https://wordpresspete.com/install-wordpress-on-macos-intel-chip/)
 
-[Install WordPres Pete on Google Cloud](https://wordpresspete.com/wordpresspete-google-cloud-installation/)
+[Install WordPres Pete on Windows](https://wordpresspete.com/install-wordpress-on-windows/)
 
-[Install WordPres Pete on Linode Cloud](https://wordpresspete.com/wordpresspete-linode-installation/)
+[Install WordPres Pete on Google Cloud](https://wordpresspete.com/install-wordpress-on-google-cloud/)
 
-[Install WordPress Pete on Ubuntu VPS](https://wordpresspete.com/wordpresspete-linux-installation/)
+[Install WordPres Pete on Linode Cloud](https://wordpresspete.com/install-wordpress-on-google-cloud/)
+
 
 
 **Tutorials**
 
-*Yes, WordPress Pete is the best in some tasks! and can save you tons of time*
+Whether you’re a solo designer, developer, small business, or a 20-person team, our comprehensive platform has the tools you need to be a WordPress Pro on day one and can save you tons of time
 
 [The best way to migrate a WordPress site](https://github.com/peterconsuegra/wordpress-pete-docker/wiki/The-Best-Way-to-Migrate-a-WordPress-Site)
 
