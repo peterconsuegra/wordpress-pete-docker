@@ -53,7 +53,7 @@ php artisan migrate
 #general options
 php artisan addoption --option_name=os --option_value=docker
 php artisan addoption --option_name=server_status --option_value=off
-php artisan addoption --option_name=parent_version --option_value=5
+php artisan addoption --option_name=parent_version --option_value=6
 php artisan addoption --option_name=version --option_value=$latestTag
 php artisan addoption --option_name=app_root --option_value=/var/www/html
 php artisan addoption --option_name=server_conf --option_value=$conf_route
