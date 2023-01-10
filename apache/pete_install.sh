@@ -100,7 +100,7 @@ cd /var/www/html/Pete && php artisan addoption --option_name=domain_template --o
 
 FILE=/var/www/.ssh/id_rsa.pub
 if [ ! -f "$FILE" ]; then
-   ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+   ssh-keygen -t rsa -N "" -f /var/www/.ssh/id_rsa
 fi
 
 if [ "$MOD_SECURITY" = "On" ]; then
