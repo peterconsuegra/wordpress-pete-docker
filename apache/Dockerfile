@@ -63,6 +63,8 @@ RUN ln -sfn /usr/bin/php7.4 /etc/alternatives/php
 RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
 RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M/post_max_size = 50M/g' {} \;
 RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
+RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/;opcache.enable=1/opcache.enable=0/g' {} \;
+
 	
 RUN	sudo apt-get --assume-yes install php8.0 php8.0-common
 RUN	sudo apt-get --assume-yes install php8.0-curl php8.0-xml php8.0-zip php8.0-gd php8.0-mysql php8.0-mbstring php8.0-imagick
@@ -161,7 +163,7 @@ RUN chown -R www-data:www-data /etc/apache2/pete-sites
 RUN chmod -R 755 /etc/apache2/pete-sites
 
 #mod_sec_report
-RUN apt --assume-yes install python3-pip
+#RUN apt --assume-yes install python3-pip
 RUN chown -R www-data:www-data /var/log/apache2
 
 # Expose details about this docker image
