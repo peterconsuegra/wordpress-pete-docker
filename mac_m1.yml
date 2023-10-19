@@ -4,7 +4,7 @@ services:
     build:
       context: './apache/'
       args:
-       PHP_VERSION: "7.4"
+       PHP_VERSION: "8.0"
        DOMAIN_TEMPLATE: "petelocal.net"
        OS_VERSION: "amd64/ubuntu:focal"
        MOD_SECURITY: "Off"
