@@ -21,7 +21,7 @@ Imagine powering the front end of your website in WordPress while managing conte
 
 [Install WordPres Pete on Google Cloud](https://wordpresspete.com/install-wordpress-on-google-cloud/)
 
-[Install WordPres Pete on Linode Cloud](https://wordpresspete.com/install-wordpress-on-google-cloud/)
+[Install WordPres Pete on Linode Cloud](https://wordpresspete.com/install-wordpress-on-linode-cloud/)
 
 
 
