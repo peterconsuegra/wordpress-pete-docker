@@ -132,18 +132,51 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 
 
-
-
 #RUN mkdir -p /var/log/apache2
 RUN touch /var/log/apache2/error_log
 RUN chmod -R 755 /var/log/apache2
 RUN chown -R www-data:www-data /var/log/apache2
+
+#MOD SECURITY CONFIGURATION
+#RUN apt-get -y install libapache2-mod-security2
+#RUN a2enmod security2
+#RUN cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+
+#installing mod_security rules
+#RUN cd /etc/modsecurity && git clone https://github.com/coreruleset/coreruleset.git
+#RUN cd /etc/modsecurity/coreruleset && git checkout v3.3/master
+#RUN mv /etc/modsecurity/coreruleset/crs-setup.conf.example /etc/modsecurity/crs-setup.conf
+#RUN mv /etc/modsecurity/coreruleset/rules/ /etc/modsecurity/
+
+#RUN rm -rf /etc/apache2/mods-available/security2.conf
+
+
+#RUN echo 'SecAuditLogFormat JSON' >> /etc/modsecurity/modsecurity.conf
+#ARG MOD_SECURITY
+#RUN if [ "$MOD_SECURITY" = "On" ] ; then find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' {} \; ; fi
+
+#RUN if [ "$MOD_SECURITY" = "Off" ] ; then find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine Off/g' {} \; ; fi
+
+#ARG SERVER_STATUS
+#RUN if [ "$SERVER_STATUS" = "On" ] ; then a2enmod status ; else a2dismod status; fi
+
+
+#RUN mkdir -p /var/log/apache2
+#RUN touch /var/log/apache2/modsec_audit.log
+#RUN touch /var/log/apache2/error_log
+#COPY security2.conf /etc/apache2/mods-available/security2.conf
+#COPY whitelist.conf /etc/modsecurity/rules/whitelist.conf
+#RUN chmod -R 755 /var/log/apache2
+#RUN chown -R www-data:www-data /var/log/apache2
+#RUN rm /etc/modsecurity/rules/REQUEST-922-MULTIPART-ATTACK.conf
+
 RUN chown -R www-data:www-data /etc/apache2/pete-sites
 RUN chmod -R 755 /etc/apache2/pete-sites
 
 #mod_sec_report
 #RUN apt --assume-yes install python3-pip
 RUN chown -R www-data:www-data /var/log/apache2
+
 
 # Expose details about this docker image
 COPY src/index.php /var/www/html
@@ -154,6 +187,7 @@ RUN rm -f /var/www/html/index.html && \
     dpkg -l > /var/www/html/.config/dpkg-l.txt
 	
 RUN mkdir -p /var/www/html/wwwlog
+RUN mkdir -p /var/www/html/ssl
 RUN chown -R www-data:www-data /var/www
 RUN chown -R www-data:www-data /etc/apache2/mods-enabled
 
