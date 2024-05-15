@@ -65,14 +65,13 @@ RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/post_max_size = 2M
 RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
 RUN find /etc/php/7.4/apache2/php.ini -type f -exec sed -i 's/;opcache.enable=1/opcache.enable=0/g' {} \;
 
+	
 RUN	sudo apt-get --assume-yes install php8.0 php8.0-common
 RUN	sudo apt-get --assume-yes install php8.0-curl php8.0-xml php8.0-zip php8.0-gd php8.0-mysql php8.0-mbstring php8.0-imagick
 RUN	ln -sfn /usr/bin/php8.0 /etc/alternatives/php
 RUN	find /etc/php/8.0/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
 RUN	find /etc/php/8.0/apache2/php.ini -type f -exec sed -i 's/post_max_size = 8M/post_max_size = 50M/g' {} \;
-RUN	find /etc/php/8.0/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 2048M/g' {} \;
-RUN find /etc/php/8.0/apache2/php.ini -type f -exec sed -i 's/;opcache.enable=1/opcache.enable=0/g' {} \;
-RUN find /etc/php/8.0/apache2/php.ini -type f -exec sed -i 's/max_execution_time = 30/max_execution_time = 300/g' {} \;	
+RUN	find /etc/php/8.0/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
 	
 RUN	sudo apt-get --assume-yes install php8.1 php8.1-common
 RUN	sudo apt-get --assume-yes install php8.1-curl php8.1-xml php8.1-zip php8.1-gd php8.1-mysql php8.1-mbstring php8.1-imagick
@@ -80,7 +79,6 @@ RUN	ln -sfn /usr/bin/php8.1 /etc/alternatives/php
 RUN	find /etc/php/8.1/apache2/php.ini -type f -exec sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' {} \;
 RUN	find /etc/php/8.1/apache2/php.ini -type f -exec sed -i 's/post_max_size = 8M/post_max_size = 50M/g' {} \;
 RUN	find /etc/php/8.1/apache2/php.ini -type f -exec sed -i 's/memory_limit = 128M/memory_limit = 256M/g' {} \;
-RUN find /etc/php/8.1/apache2/php.ini -type f -exec sed -i 's/;opcache.enable=1/opcache.enable=0/g' {} \;
 	
 #Set php 7.4 in console by default 
 #RUN echo 1 | sudo update-alternatives --config php
@@ -92,7 +90,7 @@ RUN if [ "$PHP_VERSION" = "8.0" ] ; then echo 2 | sudo update-alternatives --con
 RUN if [ "$PHP_VERSION" = "8.1" ] ; then echo 3 | sudo update-alternatives --config php ; fi
 
 RUN a2dismod php8.0
-#RUN a2dismod php8.1
+RUN a2dismod php8.1
 RUN a2dismod php7.4
 
 RUN a2enmod php${PHP_VERSION}
@@ -117,7 +115,6 @@ RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/restart_server.sh" >
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/securitystatus.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/get_mod_sec_report.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/print_security_report.sh" >> /etc/sudoers
-RUN echo "www-data ALL=NOPASSWD: /var/www/html/Pete/scripts/delete.sh" >> /etc/sudoers
 RUN echo "www-data ALL=NOPASSWD: /usr/local/bin/composer" >> /etc/sudoers
 
 
@@ -130,14 +127,38 @@ RUN chmod +x wp-cli.phar
 #RUN chmod 400 -R /var/www/.ssh
 RUN mv wp-cli.phar /usr/local/bin/wp
 
+#MOD SECURITY CONFIGURATION
+RUN apt-get -y install libapache2-mod-security2
+RUN a2enmod security2
+RUN cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+
+#installing mod_security rules
+RUN cd /etc/modsecurity && git clone https://github.com/coreruleset/coreruleset.git
+RUN cd /etc/modsecurity/coreruleset && git checkout v3.3/master
+RUN mv /etc/modsecurity/coreruleset/crs-setup.conf.example /etc/modsecurity/crs-setup.conf
+RUN mv /etc/modsecurity/coreruleset/rules/ /etc/modsecurity/
+
+RUN rm -rf /etc/apache2/mods-available/security2.conf
 
 
+RUN echo 'SecAuditLogFormat JSON' >> /etc/modsecurity/modsecurity.conf
+ARG MOD_SECURITY
+RUN if [ "$MOD_SECURITY" = "On" ] ; then find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' {} \; ; fi
+
+RUN if [ "$MOD_SECURITY" = "Off" ] ; then find /etc/modsecurity/modsecurity.conf -type f -exec sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine Off/g' {} \; ; fi
+
+ARG SERVER_STATUS
+RUN if [ "$SERVER_STATUS" = "On" ] ; then a2enmod status ; else a2dismod status; fi
 
 
 #RUN mkdir -p /var/log/apache2
+RUN touch /var/log/apache2/modsec_audit.log
 RUN touch /var/log/apache2/error_log
+COPY security2.conf /etc/apache2/mods-available/security2.conf
+COPY whitelist.conf /etc/modsecurity/rules/whitelist.conf
 RUN chmod -R 755 /var/log/apache2
 RUN chown -R www-data:www-data /var/log/apache2
+RUN rm /etc/modsecurity/rules/REQUEST-922-MULTIPART-ATTACK.conf
 RUN chown -R www-data:www-data /etc/apache2/pete-sites
 RUN chmod -R 755 /etc/apache2/pete-sites
 
