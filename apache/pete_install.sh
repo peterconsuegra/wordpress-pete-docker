@@ -121,7 +121,7 @@ chmod 755  /var/www/html/Pete/mod_sec_report/mod_sec_report
 
 chmod 600 -R /var/www/.ssh/id_rsa
 chmod 600 -R /var/www/.ssh/id_rsa.pub
-
+chown -R www-data:www-data /var/www/html/Pete
 #chown -R www-data:www-data /var/www/html/ssl
 
 apachectl -DFOREGROUND
